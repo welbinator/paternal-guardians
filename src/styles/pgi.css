@@ -1,0 +1,392 @@
+/* Paternal Guardians of Iowa — replica styles (Themify Agency look) */
+
+:root {
+	--pgi-text: #222;
+	--pgi-muted: #777;
+	--pgi-brown: #8a7048;
+	--pgi-brown-hover: #6f5a39;
+	--pgi-red: #c1272d;
+	--pgi-border: #e5e5e5;
+	--pgi-bg: #ffffff;
+	--pgi-panel: #f7f7f7;
+	--pgi-serif: Georgia, "Times New Roman", Times, serif;
+	--pgi-max: 1140px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--pgi-serif);
+	color: var(--pgi-text);
+	background: var(--pgi-bg);
+	line-height: 1.6;
+	font-size: 16px;
+}
+
+a {
+	color: var(--pgi-brown);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* ===== Header ===== */
+.site-header {
+	border-bottom: 1px solid var(--pgi-border);
+	background: var(--pgi-bg);
+}
+
+.header-inner {
+	max-width: var(--pgi-max);
+	margin: 0 auto;
+	padding: 1.25rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	color: var(--pgi-text);
+}
+
+.brand:hover {
+	text-decoration: none;
+}
+
+.brand-logo {
+	width: 90px;
+	height: auto;
+	flex-shrink: 0;
+}
+
+.brand-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.brand-name {
+	font-size: 1.9rem;
+	font-style: italic;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--pgi-text);
+}
+
+.brand-tagline {
+	font-size: 0.95rem;
+	color: var(--pgi-text);
+	margin-top: 0.35rem;
+}
+
+.main-nav {
+	display: flex;
+	gap: 1.75rem;
+	align-items: center;
+}
+
+.main-nav a {
+	color: var(--pgi-text);
+	font-size: 0.95rem;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+	color: var(--pgi-brown);
+	text-decoration: none;
+}
+
+/* ===== Slider ===== */
+.slider {
+	background: var(--pgi-panel) url("/images/fibre-bg.png");
+	padding: 2.5rem 1.5rem;
+}
+
+.slider-inner {
+	max-width: var(--pgi-max);
+	margin: 0 auto;
+	position: relative;
+}
+
+.slides {
+	position: relative;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.slide {
+	display: none;
+}
+
+.slide.active {
+	display: block;
+}
+
+.slide img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.slider-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	border: none;
+	background: rgba(255, 255, 255, 0.85);
+	color: #333;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	z-index: 2;
+}
+
+.slider-btn:hover {
+	background: #fff;
+}
+
+.slider-btn.prev {
+	left: -18px;
+}
+
+.slider-btn.next {
+	right: -18px;
+}
+
+.slider-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.6rem;
+	margin-top: 1.25rem;
+}
+
+:global(.dot) {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 1px solid var(--pgi-muted);
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+}
+
+:global(.dot.active) {
+	background: var(--pgi-muted);
+}
+
+/* ===== Sign-up section ===== */
+.signup {
+	max-width: var(--pgi-max);
+	margin: 0 auto;
+	padding: 3.5rem 1.5rem;
+	text-align: center;
+}
+
+.signup h3 {
+	font-size: 2rem;
+	font-style: italic;
+	font-weight: 700;
+	margin: 0 0 1.75rem;
+}
+
+.signup-form {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.signup-form label {
+	font-size: 1rem;
+}
+
+.signup-form input[type="email"] {
+	padding: 0.5rem 0.75rem;
+	border: 1px solid #ccc;
+	background: var(--pgi-panel);
+	font-family: var(--pgi-serif);
+	font-size: 1rem;
+	min-width: 260px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+	display: inline-block;
+	background: var(--pgi-brown);
+	color: #fff;
+	border: none;
+	padding: 0.55rem 1.4rem;
+	font-family: var(--pgi-serif);
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+.btn:hover {
+	background: var(--pgi-brown-hover);
+	text-decoration: none;
+	color: #fff;
+}
+
+/* ===== Contact page ===== */
+.page {
+	max-width: var(--pgi-max);
+	margin: 0 auto;
+	padding: 3rem 1.5rem 4rem;
+}
+
+.page h1 {
+	font-size: 2.4rem;
+	font-weight: 700;
+	margin: 0 0 1.5rem;
+}
+
+.contact-form {
+	max-width: 640px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.contact-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+	padding: 0.6rem 0.75rem;
+	border: 1px solid #ccc;
+	background: var(--pgi-panel);
+	font-family: var(--pgi-serif);
+	font-size: 1rem;
+	width: 100%;
+}
+
+.contact-form textarea {
+	min-height: 160px;
+	resize: vertical;
+}
+
+.form-note {
+	padding: 0.85rem 1rem;
+	border-radius: 2px;
+	margin-bottom: 1.25rem;
+}
+
+.form-note.success {
+	background: #e6f4ea;
+	border: 1px solid #b7dfc4;
+	color: #256b3d;
+}
+
+.form-note.error {
+	background: #fdecea;
+	border: 1px solid #f5c6cb;
+	color: #a12622;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+	background: var(--pgi-panel) url("/images/fibre-bg.png");
+	border-top: 1px solid var(--pgi-border);
+	padding: 2.5rem 1.5rem;
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.back-to-top {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #b3b3b3;
+	color: #fff;
+	font-size: 1.2rem;
+	margin-bottom: 1.25rem;
+}
+
+.back-to-top:hover {
+	background: var(--pgi-brown);
+	text-decoration: none;
+	color: #fff;
+}
+
+.footer-nav {
+	display: flex;
+	gap: 1.25rem;
+	justify-content: center;
+	margin-bottom: 0.75rem;
+}
+
+.footer-nav a {
+	color: var(--pgi-brown);
+	text-transform: uppercase;
+	font-size: 0.95rem;
+}
+
+.footer-copy,
+.footer-credit {
+	margin: 0.35rem 0;
+	font-size: 0.9rem;
+	color: var(--pgi-text);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+	.header-inner {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.brand-name {
+		font-size: 1.5rem;
+	}
+
+	.main-nav {
+		width: 100%;
+		justify-content: flex-start;
+	}
+
+	.slider-btn.prev {
+		left: 6px;
+	}
+
+	.slider-btn.next {
+		right: 6px;
+	}
+
+	.signup-form input[type="email"] {
+		min-width: 0;
+		width: 100%;
+	}
+}

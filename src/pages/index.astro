@@ -1,0 +1,101 @@
+---
+import Base from "../layouts/Base.astro";
+
+const slides = [
+	{
+		src: "/images/50629950_990610611126595_4511397733201870848_n-980x500.jpg",
+		alt: "Paternal Guardians of Iowa members at a community gathering",
+	},
+	{
+		src: "/images/Paternal-Guardians-Iowa_Gallery-2.jpg",
+		alt: "Paternal Guardians Iowa",
+	},
+	{
+		src: "/images/Paternal-Guardians-Iowa_Gallery-1.jpg",
+		alt: "Paternal Guardians Iowa",
+	},
+];
+---
+
+<Base>
+	<section class="slider">
+		<div class="slider-inner">
+			<div class="slides">
+				{
+					slides.map((slide, i) => (
+						<div class={`slide${i === 0 ? " active" : ""}`} data-slide={i}>
+							<img src={slide.src} alt={slide.alt} loading={i === 0 ? "eager" : "lazy"} />
+						</div>
+					))
+				}
+			</div>
+			<button class="slider-btn prev" aria-label="Previous slide">&laquo;</button>
+			<button class="slider-btn next" aria-label="Next slide">&raquo;</button>
+			<div class="slider-dots" id="slider-dots"></div>
+		</div>
+	</section>
+
+	<section class="signup">
+		<h3>Sign up for updates</h3>
+		<form class="signup-form" id="signup-form">
+			<label for="signup-email">Email address:</label>
+			<input
+				type="email"
+				id="signup-email"
+				name="email"
+				placeholder="Your email address"
+				required
+			/>
+			<button type="submit" class="btn">Sign up</button>
+		</form>
+		<p id="signup-msg" class="form-note success" style="display:none;margin-top:1.25rem;">
+			Thanks for signing up! We'll keep you posted.
+		</p>
+	</section>
+</Base>
+
+<script>
+	// Slider
+	const slides = Array.from(document.querySelectorAll<HTMLElement>(".slide"));
+	const dotsWrap = document.getElementById("slider-dots");
+	let current = 0;
+
+	function show(i: number) {
+		current = (i + slides.length) % slides.length;
+		slides.forEach((s, idx) => s.classList.toggle("active", idx === current));
+		if (dotsWrap) {
+			Array.from(dotsWrap.children).forEach((d, idx) =>
+				d.classList.toggle("active", idx === current),
+			);
+		}
+	}
+
+	if (dotsWrap) {
+		slides.forEach((_, i) => {
+			const dot = document.createElement("button");
+			dot.className = "dot" + (i === 0 ? " active" : "");
+			dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+			dot.addEventListener("click", () => show(i));
+			dotsWrap.appendChild(dot);
+		});
+	}
+
+	document.querySelector(".slider-btn.prev")?.addEventListener("click", () => show(current - 1));
+	document.querySelector(".slider-btn.next")?.addEventListener("click", () => show(current + 1));
+
+	let timer = setInterval(() => show(current + 1), 6000);
+	const slider = document.querySelector(".slider");
+	slider?.addEventListener("mouseenter", () => clearInterval(timer));
+	slider?.addEventListener("mouseleave", () => {
+		timer = setInterval(() => show(current + 1), 6000);
+	});
+
+	// Signup form (cosmetic — shows confirmation, no backend)
+	const form = document.getElementById("signup-form") as HTMLFormElement | null;
+	const msg = document.getElementById("signup-msg");
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		if (msg) msg.style.display = "block";
+		form.reset();
+	});
+</script>

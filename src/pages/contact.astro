@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Cosmetic contact form — shows a confirmation, no backend delivery.
+// (Defunct nonprofit rebuild. To make functional later, wire this POST
+// handler to D1 + Web3Forms; see paternalguardians project skill.)
+let submitted = false;
+if (Astro.request.method === "POST") {
+	submitted = true;
+}
+---
+
+<Base title="Contact" description="Get in touch with Paternal Guardians of Iowa.">
+	<div class="page">
+		<h1>Contact</h1>
+
+		{submitted && (
+			<p class="form-note success">
+				Thank you for reaching out. We'll get back to you as soon as we can.
+			</p>
+		)}
+
+		<form class="contact-form" method="POST">
+			<label>
+				Name
+				<input type="text" name="name" required />
+			</label>
+			<label>
+				Phone
+				<input type="tel" name="phone" />
+			</label>
+			<label>
+				Email
+				<input type="email" name="email" required />
+			</label>
+			<label>
+				Subject
+				<input type="text" name="subject" required />
+			</label>
+			<label>
+				Message
+				<textarea name="message" required></textarea>
+			</label>
+			<div>
+				<button type="submit" class="btn">Submit</button>
+			</div>
+		</form>
+	</div>
+</Base>
