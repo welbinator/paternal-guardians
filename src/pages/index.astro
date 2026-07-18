@@ -35,23 +35,6 @@ const slides = [
 		</div>
 	</section>
 
-	<section class="signup">
-		<h3>Sign up for updates</h3>
-		<form class="signup-form" id="signup-form">
-			<label for="signup-email">Email address:</label>
-			<input
-				type="email"
-				id="signup-email"
-				name="email"
-				placeholder="Your email address"
-				required
-			/>
-			<button type="submit" class="btn">Sign up</button>
-		</form>
-		<p id="signup-msg" class="form-note success" style="display:none;margin-top:1.25rem;">
-			Thanks for signing up! We'll keep you posted.
-		</p>
-	</section>
 </Base>
 
 <script>
@@ -88,14 +71,5 @@ const slides = [
 	slider?.addEventListener("mouseenter", () => clearInterval(timer));
 	slider?.addEventListener("mouseleave", () => {
 		timer = setInterval(() => show(current + 1), 6000);
-	});
-
-	// Signup form (cosmetic — shows confirmation, no backend)
-	const form = document.getElementById("signup-form") as HTMLFormElement | null;
-	const msg = document.getElementById("signup-msg");
-	form?.addEventListener("submit", (e) => {
-		e.preventDefault();
-		if (msg) msg.style.display = "block";
-		form.reset();
 	});
 </script>
