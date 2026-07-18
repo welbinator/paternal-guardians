@@ -17,6 +17,12 @@
 			"bucket_name": "paternalguardians-media"
 		}
 	],
+	"kv_namespaces": [
+		{
+			"binding": "SESSION",
+			"id": "69396209b8fe40fe92533e4b4682eaa8"
+		}
+	],
 	"worker_loaders": [
 		{
 			"binding": "LOADER"
