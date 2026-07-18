@@ -84,14 +84,6 @@ img {
 	flex-direction: column;
 }
 
-.brand-name {
-	font-size: 1.9rem;
-	font-style: italic;
-	font-weight: 700;
-	line-height: 1.1;
-	color: var(--pgi-text);
-}
-
 .brand-tagline {
 	font-size: 0.95rem;
 	color: var(--pgi-text);
@@ -366,10 +358,6 @@ img {
 	.header-inner {
 		flex-direction: column;
 		align-items: flex-start;
-	}
-
-	.brand-name {
-		font-size: 1.5rem;
 	}
 
 	.main-nav {
