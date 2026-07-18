@@ -5,12 +5,28 @@
 
 import type { ContentBylineCredit, TaxonomyTerm, PortableTextBlock } from "emdash";
 
+export interface Gallery {
+  id: string;
+  slug: string | null;
+  status: string;
+  photo: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  alt?: string;
+  sort_order?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Page {
   id: string;
   slug: string | null;
   status: string;
   title: string;
   content?: PortableTextBlock[];
+  heading?: string;
+  intro?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -20,6 +36,7 @@ export interface Page {
 
 declare module "emdash" {
   interface EmDashCollections {
+    gallery: Gallery;
     pages: Page;
   }
 }

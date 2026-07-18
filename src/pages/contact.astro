@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { getEmDashCollection } from "emdash";
 
 // Cosmetic contact form — shows a confirmation, no backend delivery.
 // (Defunct nonprofit rebuild. To make functional later, wire this POST
@@ -8,11 +9,21 @@ let submitted = false;
 if (Astro.request.method === "POST") {
 	submitted = true;
 }
+
+// Page copy from CMS (pages collection, slug "contact")
+const { entries } = await getEmDashCollection("pages", {
+	status: "published",
+	limit: 100,
+});
+const page = entries.find((e) => e.slug === "contact");
+const heading = (page?.data.heading as string) || "Contact";
+const intro = (page?.data.intro as string) || "";
 ---
 
 <Base title="Contact" description="Get in touch with Paternal Guardians of Iowa.">
 	<div class="page">
-		<h1>Contact</h1>
+		<h1>{heading}</h1>
+		{intro && <p class="page-intro">{intro}</p>}
 
 		{submitted && (
 			<p class="form-note success">
