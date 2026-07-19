@@ -61,6 +61,11 @@ export default defineConfig({
 					// the virtual module has no on-disk location to anchor them).
 					entrypoint: new URL("./src/plugins/marketing-blocks/index.ts", import.meta.url).href,
 				},
+				{
+					id: "postmark-email",
+					version: "1.0.0",
+					entrypoint: new URL("./src/plugins/postmark-email/index.ts", import.meta.url).href,
+				},
 			],
 		}),
 	],
