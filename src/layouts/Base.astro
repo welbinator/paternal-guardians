@@ -11,6 +11,9 @@ const siteTitle = "Paternal Guardians of Iowa";
 const fullTitle = title ? `${title} – ${siteTitle}` : `${siteTitle} – A network of support & resource center for Iowa Fathers`;
 const siteDescription = description || "A network of support & resource center for Iowa Fathers";
 const path = Astro.url.pathname;
+// Mount-relative base ("/" on prod, "/paternal-guardians/" on GitHub Pages).
+// Trailing slash normalized so `${base}images/x.png` always resolves right.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
 ---
 
 <!doctype html>
@@ -20,14 +23,14 @@ const path = Astro.url.pathname;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{fullTitle}</title>
 		<meta name="description" content={siteDescription} />
-		<link rel="icon" href="/images/Parental-Guardians-Of-Iowa-logo.png" />
+		<link rel="icon" href={`${base}images/Parental-Guardians-Of-Iowa-logo.png`} />
 	</head>
 	<body>
 		<header class="site-header" id="header">
 			<div class="header-inner">
-				<a href="/" class="brand">
+				<a href={base} class="brand">
 					<img
-						src="/images/Parental-Guardians-Of-Iowa-logo.png"
+						src={`${base}images/Parental-Guardians-Of-Iowa-logo.png`}
 						alt="Paternal Guardians of Iowa"
 						class="brand-logo"
 					/>
@@ -36,7 +39,7 @@ const path = Astro.url.pathname;
 					</span>
 				</a>
 				<nav class="main-nav">
-					<a href="/" class={path === "/" ? "active" : ""}>HOME</a>
+					<a href={base} class={path === base || path === "/" ? "active" : ""}>HOME</a>
 				</nav>
 			</div>
 		</header>
@@ -48,10 +51,10 @@ const path = Astro.url.pathname;
 		<footer class="site-footer">
 			<a href="#header" class="back-to-top" aria-label="Back to top">↑</a>
 			<nav class="footer-nav">
-				<a href="/">HOME</a>
+				<a href={base}>HOME</a>
 			</nav>
 			<p class="footer-copy">
-				© <a href="/">Paternal Guardians of Iowa</a> {new Date().getFullYear()}
+				© <a href={base}>Paternal Guardians of Iowa</a> {new Date().getFullYear()}
 			</p>
 			<p class="footer-credit">
 				Proudly built and hosted by

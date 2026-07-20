@@ -2,18 +2,20 @@
 import Base from "../layouts/Base.astro";
 
 // Static gallery — images live in public/images/. Order matches the former
-// CMS sort_order. To add/remove slides, edit this array.
+// CMS sort_order. To add/remove slides, edit this array. Paths are relative
+// to public/; the base prefix below makes them portable across mount points.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
 const slides = [
 	{
-		src: "/images/50629950_990610611126595_4511397733201870848_n-980x500.jpg",
+		src: `${base}images/50629950_990610611126595_4511397733201870848_n-980x500.jpg`,
 		alt: "Paternal Guardians of Iowa members at a community gathering",
 	},
 	{
-		src: "/images/Paternal-Guardians-Iowa_Gallery-2.jpg",
+		src: `${base}images/Paternal-Guardians-Iowa_Gallery-2.jpg`,
 		alt: "Paternal Guardians Iowa",
 	},
 	{
-		src: "/images/Paternal-Guardians-Iowa_Gallery-1.jpg",
+		src: `${base}images/Paternal-Guardians-Iowa_Gallery-1.jpg`,
 		alt: "Paternal Guardians Iowa",
 	},
 ];

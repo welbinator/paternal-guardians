@@ -36,11 +36,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build (mounted under the Pages subpath)
         run: npm run build
-
-      - name: Add CNAME for custom staging domain
-        run: echo "staging.paternalguardians.org" > ./dist/CNAME
+        env:
+          # GitHub Pages serves this project site at /<repo>/. The base path
+          # makes every BASE_URL-derived link/asset resolve correctly there.
+          # Production (Cloudflare, root domain) builds without this var.
+          PAGES_BASE: /paternal-guardians/
 
       - name: Inject noindex meta tag into all built HTML files
         run: |

@@ -111,7 +111,7 @@ img {
 
 /* ===== Slider ===== */
 .slider {
-	background: var(--pgi-panel) url("/images/fibre-bg.png");
+	background: var(--pgi-panel) url("../images/fibre-bg.png");
 	padding: 2.5rem 1.5rem;
 }
 
@@ -224,7 +224,7 @@ img {
 
 /* ===== Footer ===== */
 .site-footer {
-	background: var(--pgi-panel) url("/images/fibre-bg.png");
+	background: var(--pgi-panel) url("../images/fibre-bg.png");
 	border-top: 1px solid var(--pgi-border);
 	padding: 2.5rem 1.5rem;
 	text-align: center;
