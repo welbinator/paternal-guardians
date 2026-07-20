@@ -176,7 +176,7 @@ img {
 	margin-top: 1.25rem;
 }
 
-:global(.dot) {
+.dot {
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
@@ -186,44 +186,8 @@ img {
 	cursor: pointer;
 }
 
-:global(.dot.active) {
+.dot.active {
 	background: var(--pgi-muted);
-}
-
-/* ===== Sign-up section ===== */
-.signup {
-	max-width: var(--pgi-max);
-	margin: 0 auto;
-	padding: 3.5rem 1.5rem;
-	text-align: center;
-}
-
-.signup h3 {
-	font-size: 2rem;
-	font-style: italic;
-	font-weight: 700;
-	margin: 0 0 1.75rem;
-}
-
-.signup-form {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.75rem;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.signup-form label {
-	font-size: 1rem;
-}
-
-.signup-form input[type="email"] {
-	padding: 0.5rem 0.75rem;
-	border: 1px solid #ccc;
-	background: var(--pgi-panel);
-	font-family: var(--pgi-serif);
-	font-size: 1rem;
-	min-width: 260px;
 }
 
 /* ===== Buttons ===== */
@@ -256,53 +220,6 @@ img {
 	font-size: 2.4rem;
 	font-weight: 700;
 	margin: 0 0 1.5rem;
-}
-
-.contact-form {
-	max-width: 640px;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
-
-.contact-form label {
-	display: flex;
-	flex-direction: column;
-	gap: 0.35rem;
-	font-size: 0.95rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-	padding: 0.6rem 0.75rem;
-	border: 1px solid #ccc;
-	background: var(--pgi-panel);
-	font-family: var(--pgi-serif);
-	font-size: 1rem;
-	width: 100%;
-}
-
-.contact-form textarea {
-	min-height: 160px;
-	resize: vertical;
-}
-
-.form-note {
-	padding: 0.85rem 1rem;
-	border-radius: 2px;
-	margin-bottom: 1.25rem;
-}
-
-.form-note.success {
-	background: #e6f4ea;
-	border: 1px solid #b7dfc4;
-	color: #256b3d;
-}
-
-.form-note.error {
-	background: #fdecea;
-	border: 1px solid #f5c6cb;
-	color: #a12622;
 }
 
 /* ===== Footer ===== */
@@ -371,10 +288,5 @@ img {
 
 	.slider-btn.next {
 		right: 6px;
-	}
-
-	.signup-form input[type="email"] {
-		min-width: 0;
-		width: 100%;
 	}
 }
