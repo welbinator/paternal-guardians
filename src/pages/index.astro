@@ -1,28 +1,22 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getEmDashCollection } from "emdash";
 
-type EmDashImage = {
-	meta?: { storageKey?: string };
-} | null;
-
-const { entries } = await getEmDashCollection("gallery", {
-	status: "published",
-	orderBy: { sort_order: "asc" },
-	limit: 100,
-});
-
-const slides = entries
-	.map((entry) => {
-		const img = entry.data.photo as EmDashImage;
-		const storageKey = img?.meta?.storageKey;
-		if (!storageKey) return null;
-		return {
-			src: `/_emdash/api/media/file/${storageKey}`,
-			alt: (entry.data.alt as string) ?? "",
-		};
-	})
-	.filter((s): s is { src: string; alt: string } => s !== null);
+// Static gallery — images live in public/images/. Order matches the former
+// CMS sort_order. To add/remove slides, edit this array.
+const slides = [
+	{
+		src: "/images/50629950_990610611126595_4511397733201870848_n-980x500.jpg",
+		alt: "Paternal Guardians of Iowa members at a community gathering",
+	},
+	{
+		src: "/images/Paternal-Guardians-Iowa_Gallery-2.jpg",
+		alt: "Paternal Guardians Iowa",
+	},
+	{
+		src: "/images/Paternal-Guardians-Iowa_Gallery-1.jpg",
+		alt: "Paternal Guardians Iowa",
+	},
+];
 ---
 
 <Base>

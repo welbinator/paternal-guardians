@@ -1,23 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getEmDashCollection } from "emdash";
 
-// Cosmetic contact form — shows a confirmation, no backend delivery.
-// (Defunct nonprofit rebuild. To make functional later, wire this POST
-// handler to D1 + Web3Forms; see paternalguardians project skill.)
-let submitted = false;
-if (Astro.request.method === "POST") {
-	submitted = true;
-}
-
-// Page copy from CMS (pages collection, slug "contact")
-const { entries } = await getEmDashCollection("pages", {
-	status: "published",
-	limit: 100,
-});
-const page = entries.find((e) => e.slug === "contact");
-const heading = (page?.data.heading as string) || "Contact";
-const intro = (page?.data.intro as string) || "";
+// Static contact page. The form is cosmetic — it shows a confirmation
+// client-side but does not deliver mail (matches the prior behavior).
+// To make it functional later, sign up for Web3Forms (free) and set the
+// access key below, or swap the <form> action to Formspree.
+const WEB3FORMS_KEY = ""; // <-- paste a Web3Forms access key to enable real delivery
+const heading = "Contact";
+const intro = "";
 ---
 
 <Base title="Contact" description="Get in touch with Paternal Guardians of Iowa.">
@@ -25,13 +15,17 @@ const intro = (page?.data.intro as string) || "";
 		<h1>{heading}</h1>
 		{intro && <p class="page-intro">{intro}</p>}
 
-		{submitted && (
-			<p class="form-note success">
-				Thank you for reaching out. We'll get back to you as soon as we can.
-			</p>
-		)}
+		<p class="form-note success" id="form-success" hidden>
+			Thank you for reaching out. We'll get back to you as soon as we can.
+		</p>
 
-		<form class="contact-form" method="POST">
+		<form
+			class="contact-form"
+			id="contact-form"
+			method="POST"
+			action={WEB3FORMS_KEY ? "https://api.web3forms.com/submit" : undefined}
+		>
+			{WEB3FORMS_KEY && <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />}
 			<label>
 				Name
 				<input type="text" name="name" required />
@@ -58,3 +52,20 @@ const intro = (page?.data.intro as string) || "";
 		</form>
 	</div>
 </Base>
+
+<script>
+	// If no real delivery backend is configured, intercept the submit and just
+	// show the confirmation message (cosmetic form — same as the old behavior).
+	const form = document.getElementById("contact-form") as HTMLFormElement | null;
+	const success = document.getElementById("form-success");
+	if (form && !form.getAttribute("action")) {
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			form.reset();
+			if (success) {
+				success.hidden = false;
+				success.scrollIntoView({ behavior: "smooth", block: "center" });
+			}
+		});
+	}
+</script>

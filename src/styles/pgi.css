@@ -176,7 +176,7 @@ img {
 	margin-top: 1.25rem;
 }
 
-:global(.dot) {
+.dot {
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
@@ -186,7 +186,7 @@ img {
 	cursor: pointer;
 }
 
-:global(.dot.active) {
+.dot.active {
 	background: var(--pgi-muted);
 }
 
